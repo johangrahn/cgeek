@@ -1,0 +1,27 @@
+* {
+	font-family: Verdana, sans-serif;
+}
+
+
+p {
+	font-size: 13px;
+	line-height: 14pt;
+}
+
+a {
+	color: #aaa;
+	text-decoration: none;
+	border-bottom: 1px #000 dotted;
+}
+
+a:hover {
+	color: #aaa;
+	text-decoration: none;
+	border: 0;
+}
+
+#content {
+	margin-left: 5em;
+	margin-top: 5em;
+	width: 530px;
+}
