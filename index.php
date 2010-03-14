@@ -15,13 +15,31 @@ function __autoload( $class ) {
 	}
 }
 
+class DateFormat {
+	static public function toNewsDate( $timestamp ) {
+		return date( 'j F Y', $timestamp );
+	}
+}
 
-$newsItems = array(
-	new NewsItem( 'GIT repository for the source - 2010-03-05', 'The source code for my site is now on GitHub, so if you are interested on how my site is build the URL is:
-	<a href="http://github.com/high/cgeek">http://github.com/high/cgeek</a>.' ),
-	new NewsItem( 'New site up - 2010-03-05', 'Well, here is the new site. My goal is to make it as simple as possible and just display the things that are essential to me. There is no PHP or database
-	backend witch means it is only one HTML-file. It is portable and easy to use. No GUI is necessary to read or write.')
+$newsData = array( 'title' => 'GIT repository for the source', 
+				'content' => 'The source code for my site is now on GitHub, so if you are interested on how my site is build the URL is:
+<a href="http://github.com/high/cgeek">http://github.com/high/cgeek</a>.', 
+			'created' => mktime( 0,0,0, 3,14, 2009 )
 );
+
+$newsItem = new NewsItem();
+$newsItem->loadData( $newsData );
+$newsItems[] = $newsItem;
+
+$newsData = array( 'title' => 'New site is up', 
+				'content' => 'Well, here is the new site. My goal is to make it as simple as possible and just display the things that are essential to me', 
+			'created' => mktime( 0,0,0, 3,12, 2010 )
+);
+
+$newsItem = new NewsItem();
+$newsItem->loadData( $newsData );
+$newsItems[] = $newsItem;
+
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
@@ -49,7 +67,7 @@ $newsItems = array(
 			<h2>News</h2>
 		
 			<?php foreach( $newsItems as $newsItem ): ?> 
-			<h3><?php echo $newsItem->getTitle() ?></h3>
+			<h3><?php echo $newsItem->getTitle() ?> - <?php echo DateFormat::toNewsDate( $newsItem->getCreatedTimestamp() ) ?></h3>
 			<p>
 				<?php echo $newsItem->getContent() ?>
 			</p>
