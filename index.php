@@ -5,7 +5,16 @@
 error_reporting( E_ALL );
 ini_set( "display_errors", "on");
 
-require( "lib/NewsItem.class.php" );
+// Automaticly loads each class that is needed by including 
+// the definition from a file 
+function __autoload( $class ) {
+	$fileName = "lib/" . $class . ".class.php";
+	
+	if( file_exists( $fileName ) ) {
+		require( $fileName );
+	}
+}
+
 
 $newsItems = array(
 	new NewsItem( 'GIT repository for the source - 2010-03-05', 'The source code for my site is now on GitHub, so if you are interested on how my site is build the URL is:
