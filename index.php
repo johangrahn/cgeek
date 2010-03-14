@@ -15,11 +15,7 @@ function __autoload( $class ) {
 	}
 }
 
-class DateFormat {
-	static public function toNewsDate( $timestamp ) {
-		return date( 'j F Y', $timestamp );
-	}
-}
+
 
 $newsData = array( 'title' => 'GIT repository for the source', 
 				'content' => 'The source code for my site is now on GitHub, so if you are interested on how my site is build the URL is:
