@@ -5,6 +5,15 @@
 error_reporting( E_ALL );
 ini_set( "display_errors", "on");
 
+require( "lib/NewsItem.class.php" );
+
+$newsItems = array(
+	new NewsItem( 'GIT repository for the source - 2010-03-05', 'The source code for my site is now on GitHub, so if you are interested on how my site is build the URL is:
+	<a href="http://github.com/high/cgeek">http://github.com/high/cgeek</a>.' ),
+	new NewsItem( 'New site up - 2010-03-05', 'Well, here is the new site. My goal is to make it as simple as possible and just display the things that are essential to me. There is no PHP or database
+	backend witch means it is only one HTML-file. It is portable and easy to use. No GUI is necessary to read or write.')
+);
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
@@ -29,23 +38,13 @@ ini_set( "display_errors", "on");
 			</i></p>
 			
 			<h2>News</h2>
-			
-			<h3>GIT repository for the source - 2010-03-05</h3>
+		
+			<?php foreach( $newsItems as $newsItem ): ?> 
+			<h3><?php echo $newsItem->getTitle() ?></h3>
 			<p>
-				The source code for my site is now on GitHub, so if you are interested on how my site is build the URL is:
-				<a href="http://github.com/high/cgeek">http://github.com/high/cgeek</a>.
-
+				<?php echo $newsItem->getContent() ?>
 			</p>
-			
-			
-			<h3>New site up - 2010-03-05</h3>
-			<p>
-				Well, here is the new site. My goal is to make it as simple as possible and just display the things that are essential to me. There is no PHP or database
-				backend witch means it is only one HTML-file. It is portable and easy to use. No GUI is necessary to read or write.
-			</p>
-			<p>
-				Happy reading!
-			</p>
+			<?php endforeach; ?>
 		</div>
 	</body>
 </html>
