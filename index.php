@@ -45,7 +45,7 @@ $newsItems[] = $newsItem;
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		
 		<title>High's page</title>
-		<link rel="stylesheet" type="text/css" href="site.css" />
+		<link rel="stylesheet" type="text/css" href="site.css"></link>
 	</head>
 	
 	<body>
