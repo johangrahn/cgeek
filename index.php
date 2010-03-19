@@ -21,6 +21,7 @@ class RSSFeed {
 	
 	private $newsItems;
 	
+	// Sets the news items that the RSS feed will contain 
 	public function setNewsItems( array $newsItems ) {
 		$this->newsItems = $newsItems;
 	}
