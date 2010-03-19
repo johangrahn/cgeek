@@ -32,7 +32,7 @@ class RSSFeed {
 		<rss version="2.0">
 
 		<channel>
-		  <title>High\'s life &trade;</title>
+		  <title>Highs life</title>
 		  <link>http://cgeek.net</link>
 		  <description>My life on the digital media</description>';
 		
