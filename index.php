@@ -15,7 +15,42 @@ function __autoload( $class ) {
 	}
 }
 
+// This class creates an RSS feed string that can be put inside a file or directly 
+// to the webbrowser 
+class RSSFeed {
+	
+	private $newsItems;
+	
+	public function setNewsItems( array $newsItems ) {
+		$this->newsItems = $newsItems;
+	}
+	
+	// Return a valid RSS string of a given news items 
+	public function compile() {
+		$rss = '<?xml version="1.0" encoding="UTF-8" ?>
+		<rss version="2.0">
 
+		<channel>
+		  <title>High\'s life &trade;</title>
+		  <link>http://cgeek.net</link>
+		  <description>My life on the digital media</description>';
+		
+		foreach( $this->newsItems as $item ) {
+			$rss .= '
+			<item>
+			    <title>' . $item->getTitle() . '</title>
+			    <link></link>
+			    <description>' . $item->getContent() . '</description>
+			</item>';
+		}
+		
+		$rss .= '
+			</channel>
+		</rss>';
+		
+		return $rss;
+	}
+}
 
 $newsData = array( 'title' => 'GIT repository for the source', 
 				'content' => 'The source code for my site is now on GitHub, so if you are interested on how my site is build the URL is:
@@ -36,6 +71,12 @@ $newsItem = new NewsItem();
 $newsItem->loadData( $newsData );
 $newsItems[] = $newsItem;
 
+$rss = new RSSFeed();
+$rss->setNewsItems( $newsItems );
+$rssText = $rss->compile();
+
+
+file_put_contents( "rss.xml", $rssText );
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
