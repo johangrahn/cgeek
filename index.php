@@ -92,9 +92,9 @@ file_put_contents( "rss.xml", $rssText );
 	
 	<body>
 		<div id="content">
-			<h1>
+			<div id="title">
 				My Life&trade;
-			</h1>
+			</div>
 			
 			<p><i>
 				This is my page about me. Now, you may have noticed that there is no color or graphics on this page. 
